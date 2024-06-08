@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="quad_name" default="snowyowl" />
+  <arg name="use_mpc" default="false"/>
+  <arg name="server" default="192.168.10.1"/>
+
+  <!-- State Estimate VRPN -->
+  <node pkg="vrpn_client_ros" type="vrpn_client_node" name="vrpn_client_node" output="screen">
+    <rosparam subst_value="true">
+      server: $(arg server)
+      port: 3883
+
+      update_frequency: 100.0
+      frame_id: world
+
+      # Use the VRPN server's time, or the client's ROS time.
+      use_server_time: false
+      broadcast_tf: true
+
+      # Must either specify refresh frequency > 0.0, or a list of trackers to create
+      refresh_tracker_frequency: 1.0
+      #trackers:
+      #- FirstTracker
+      #- SecondTracker
+    </rosparam>
+  </node>
+
+  <group ns="$(arg quad_name)" >
+    <!-- SBUS Bridge -->
+    <node pkg="sbus_bridge" name="sbus_bridge" type="sbus_bridge" 
+        output="screen" >
+      <rosparam file="$(find sbus_bridge)/parameters/snowyowl_sbus_bridge.yaml"/>
+            
+      <param name="port_name" value="/dev/ttyTHS0" />
+
+    </node>
+
+    <!-- Autopilot -->
+    <group unless="$(arg use_mpc)">
+      <node pkg="autopilot" type="autopilot" name="autopilot" output="screen">
+
+        <rosparam file="$(find state_predictor)/parameters/snowyowl_sp.yaml" />
+        <rosparam file="$(find position_controller)/parameters/snowyowl_pc.yaml" />
+        <rosparam file="$(find autopilot)/parameters/snowyowl_ap.yaml" />
+
+        <param name="position_controller/use_rate_mode" value="True" />
+        <param name="velocity_estimate_in_world_frame" value="True" />
+        <param name="state_estimate_timeout" value="0.1" />
+        <param name="control_command_delay" value="0.00" />
+	    <param name="enable_command_feedthrough" value="True" />
+
+      </node>
+    </group>
+
+ 
+
+  </group>
+
+</launch>
