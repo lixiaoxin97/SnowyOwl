@@ -79,9 +79,9 @@ void SBusMsg::setYawCommand(const uint16_t yaw_cmd) {
 
 void SBusMsg::setControlMode(const ControlMode& control_mode) {
   if (control_mode == ControlMode::ATTITUDE) {
-    channels[channel_mapping::kControlMode] = kMaxCmd;
-  } else if (control_mode == ControlMode::BODY_RATES) {
     channels[channel_mapping::kControlMode] = kMinCmd;
+  } else if (control_mode == ControlMode::BODY_RATES) {
+    channels[channel_mapping::kControlMode] = kMaxCmd;
   }
 }
 

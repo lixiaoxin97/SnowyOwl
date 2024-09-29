@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="quad_name" />
+  <arg name="quad_name"/>
   <arg name="use_mpc" default="false"/>
   <arg name="enable_command_feedthrough" default="false" />
 
@@ -19,7 +19,7 @@
         output="screen" >
       <rosparam file="$(find sbus_bridge)/parameters/default.yaml"/>
             
-      <param name="port_name" value="/dev/ttyTHS0" />
+      <param name="port_name" value="/dev/ttyS1" />
 
       <!-- make it compatible with quad gui -->
       <remap from="sbus_bridge/arm" to="bridge/arm" />

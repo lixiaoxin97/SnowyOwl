@@ -1,4 +1,0 @@
-gym==0.11
-ruamel.yaml==0.16.10
-numpy
-stable_baselines==2.10.1

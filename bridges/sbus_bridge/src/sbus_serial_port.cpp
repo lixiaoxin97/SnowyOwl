@@ -233,6 +233,7 @@ void SBusSerialPort::transmitSerialSBusMessage(const SBusMsg& sbus_msg) const {
 
   // SBUS footer
   buffer[24] = kSbusFooterByte_;
+
   const int written = write(serial_port_fd_, (char*)buffer, kSbusFrameLength_);
   // tcflush(serial_port_fd_, TCOFLUSH); // There were rumors that this might
   // not work on Odroids...
@@ -262,11 +263,10 @@ void SBusSerialPort::serialPortReceiveThread() {
     // Buffer to read bytes from serial port. We make it large enough to
     // potentially contain 4 sbus messages but its actual size probably does
     // not matter too much
-
     uint8_t read_buf[4 * kSbusFrameLength_];
 
     if (poll(fds, 1, kPollTimeoutMilliSeconds_) > 0) {
-        if (fds[0].revents & POLLIN) {
+      if (fds[0].revents & POLLIN) {
         const ssize_t nread = read(serial_port_fd_, read_buf, sizeof(read_buf));
 
         for (ssize_t i = 0; i < nread; i++) {
@@ -280,7 +280,6 @@ void SBusSerialPort::serialPortReceiveThread() {
           // A valid SBUS message must have to correct header and footer byte
           // as well as zeros in the four most significant bytes of the flag
           // byte (byte 23)
-          
           if (bytes_buf.front() == kSbusHeaderByte_ &&
               !(bytes_buf[kSbusFrameLength_ - 2] & 0xF0) &&
               bytes_buf[kSbusFrameLength_ - 1] == kSbusFooterByte_) {

@@ -4,9 +4,9 @@ namespace sbus_bridge {
 
 namespace channel_mapping {
 
-static constexpr uint8_t kThrottle = 2;
-static constexpr uint8_t kRoll = 0;
-static constexpr uint8_t kPitch = 1;
+static constexpr uint8_t kThrottle = 0;
+static constexpr uint8_t kRoll = 1;
+static constexpr uint8_t kPitch = 2;
 static constexpr uint8_t kYaw = 3;
 static constexpr uint8_t kArming = 4;
 static constexpr uint8_t kControlMode = 5;

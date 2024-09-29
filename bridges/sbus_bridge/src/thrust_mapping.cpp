@@ -48,16 +48,8 @@ uint16_t CollectiveThrustMapping::inverseThrustMapping(
     }
   }
 
-  // ROS_INFO("thrust applied: %f", thrust_applied);
-  // ROS_INFO("thrust map a: %f", thrust_map_a_);
-  // ROS_INFO("thrust map b: %f", thrust_map_b_);
-  // ROS_INFO("thrust map c: %f", thrust_map_c_);
-
-                  
   //Citardauq Formula: Gives a numerically stable solution of the quadratic equation for thrust_map_a ~ 0, which is not the case for the standard formula.
   const uint16_t cmd = 2.0 * (thrust_map_c_ - thrust_applied) / (-thrust_map_b_ - sqrt(thrust_map_b_ * thrust_map_b_ - 4.0 * thrust_map_a_ * (thrust_map_c_ - thrust_applied)));
-
-  // ROS_INFO("cmd: %d", cmd);
 
   return cmd;
 }
