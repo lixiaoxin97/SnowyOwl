@@ -50,3 +50,15 @@ source .bashrc
 cd ~/Desktop/catkin_ws/src/SnowyOwl  
 git remote set-url origin https://Token@github.com/lixiaoxin97/SnowyOwl.git  
 git push  
+
+## snowyowl3
+everything we need is in there  
+### fly_scripts
+action control command  
+### neural_network
+everything about neural network  
+### snowyowl_launch_files
+gazebo_simulation_flight  
+real_world_flight  
+### vrpn_client_ros
+VICON state estimate  

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <name>snowyowl_launch_files</name>
+  <version>0.0.0</version>
+  <description>The snowyowl_launch_files package</description>
+
+  <maintainer email="lixiaoxin97@foxmail.com">lixiaoxin97</maintainer>
+  <license>MIT</license>
+
+  <author>lixiaoxin97</author>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+  <export>
+
+  </export>
+</package>

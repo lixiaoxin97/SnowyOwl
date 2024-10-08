@@ -45,3 +45,6 @@ matlab_gen
 # CLion 
 .idea/
 cmake-build-debug/
+
+snowyowl3/neural_network/build
+snowyowl3/neural_network/SnowyOwl.egg-info
