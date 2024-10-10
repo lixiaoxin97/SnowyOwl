@@ -33,7 +33,7 @@
     <node pkg="autopilot" type="autopilot" name="autopilot" output="screen">
       <rosparam file="$(find state_predictor)/parameters/default.yaml" />
       <rosparam file="$(find position_controller)/parameters/default.yaml" />
-      <rosparam file="$(find autopilot)/parameters/default.yaml" />
+      <rosparam file="$(find snowyowl_launch_files)/parameters/snowyowl3_autopilot.yaml" />
       <param name="position_controller/use_rate_mode" value="True" />
       <param name="velocity_estimate_in_world_frame" value="True" />
       <param name="state_estimate_timeout" value="0.1" />

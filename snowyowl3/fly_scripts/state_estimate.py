@@ -21,8 +21,8 @@ class ViconTransfer:
         self.vision_twist = TwistStamped()
         self.odom = Odometry()
 
-        self.vicon_pose_sub = rospy.Subscriber("/vrpn_client_node/snowyowl3/pose", PoseStamped, self.vicon_pose_callback)
-        self.vicon_twist_sub = rospy.Subscriber("/vrpn_client_node/snowyowl3/twist", TwistStamped, self.vicon_twist_callback)
+        self.vicon_pose_sub = rospy.Subscriber("/snowyowl3/vrpn_client_node/snowyowl3/pose", PoseStamped, self.vicon_pose_callback)
+        self.vicon_twist_sub = rospy.Subscriber("/snowyowl3/vrpn_client_node/snowyowl3/twist", TwistStamped, self.vicon_twist_callback)
 
         self.odom_pub = rospy.Publisher("/snowyowl3/autopilot/state_estimate", Odometry, queue_size=5)
 
