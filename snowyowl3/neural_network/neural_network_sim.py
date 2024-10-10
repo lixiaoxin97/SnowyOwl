@@ -26,7 +26,7 @@ class NetworkController:
         self._state_estimate_sub = rospy.Subscriber("/hummingbird/ground_truth/odometry", Odometry, self.state_estimate_callback)
         self._control_command_pub = rospy.Publisher("/hummingbird/autopilot/control_command_input", quadrotor_msgs.ControlCommand, queue_size=3)
 
-        self.neural_network = PPO2.load('./test.zip')
+        self.neural_network = PPO2.load('./GapAlign.zip')
         
         self.neural_network_obs = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], dtype=np.float32)
         self.neural_network_act = None
@@ -65,8 +65,8 @@ class NetworkController:
                 self.act.control_mode = 2
                 self.act.armed = True
 
-                self.act.bodyrates.x = self.neural_network_act[0] * 3.1415926 
-                self.act.bodyrates.y = self.neural_network_act[1] * 3.1415926 
+                self.act.bodyrates.x = self.neural_network_act[0] * 3.1415926 * 2
+                self.act.bodyrates.y = self.neural_network_act[1] * 3.1415926 * 2
                 self.act.bodyrates.z = self.neural_network_act[2] * 3.1415926 
                 self.act.collective_thrust = self.neural_network_act[3] * 9.81 * 1 + 9.81 
                 if (self.act.collective_thrust < 0):
