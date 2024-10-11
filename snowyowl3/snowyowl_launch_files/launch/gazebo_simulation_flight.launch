@@ -46,7 +46,7 @@
   <!-- rpg_rotors_interface !-->
   <group ns="$(arg quad_name)" >
     <node pkg="rpg_rotors_interface" type="rpg_rotors_interface" name="rpg_rotors_interface" output="screen" >
-      <rosparam file="$(find rpg_rotors_interface)/parameters/rpg_rotors_interface.yaml" />
+      <rosparam file="$(find snowyowl_launch_files)/parameters/snowyowl3_rotors_interface.yaml" />
       <remap from="odometry" to="ground_truth/odometry" />
       <remap from="rpg_rotors_interface/arm" to="bridge/arm" />
     </node>
