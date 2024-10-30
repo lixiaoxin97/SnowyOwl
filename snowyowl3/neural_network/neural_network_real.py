@@ -26,7 +26,7 @@ class NetworkController:
         self._state_estimate_sub = rospy.Subscriber("/snowyowl3/autopilot/state_estimate", Odometry, self.state_estimate_callback)
         self._control_command_pub = rospy.Publisher("/snowyowl3/autopilot/control_command_input", quadrotor_msgs.ControlCommand, queue_size=3)
 
-        self.neural_network = PPO2.load('./GapAlignMore.zip')
+        self.neural_network = PPO2.load('./TAE_3_AgileHover.zip')
         
         self.neural_network_obs = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], dtype=np.float32)
         self.neural_network_act = None
@@ -44,7 +44,7 @@ class NetworkController:
         self.euler_zyx = self.r.as_euler('ZYX', degrees=False)
         self.neural_network_obs = np.array([self.obs.pose.pose.position.x,
                                             self.obs.pose.pose.position.y,
-                                            self.obs.pose.pose.position.z - 1.0,
+                                            self.obs.pose.pose.position.z + 4.0,
                                             self.euler_zyx[0],
                                             self.euler_zyx[1],
                                             self.euler_zyx[2],
