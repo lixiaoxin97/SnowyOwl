@@ -26,7 +26,7 @@ class NetworkController:
         self._state_estimate_sub = rospy.Subscriber("/snowyowl3/autopilot/state_estimate", Odometry, self.state_estimate_callback)
         self._control_command_pub = rospy.Publisher("/snowyowl3/autopilot/control_command_input", quadrotor_msgs.ControlCommand, queue_size=3)
 
-        self.neural_network = PPO2.load('./NT_12_NegativeThrust.zip')
+        self.neural_network = PPO2.load('./LQAH_1.zip')
         
         self.neural_network_obs = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], dtype=np.float32)
         self.neural_network_act = None
@@ -44,7 +44,7 @@ class NetworkController:
         self.euler_zyx = self.r.as_euler('ZYX', degrees=False)
         self.neural_network_obs = np.array([self.obs.pose.pose.position.x,
                                             self.obs.pose.pose.position.y,
-                                            self.obs.pose.pose.position.z - 1.0,
+                                            self.obs.pose.pose.position.z + 4.0,
                                             self.euler_zyx[0],
                                             self.euler_zyx[1],
                                             self.euler_zyx[2],
@@ -68,7 +68,7 @@ class NetworkController:
                 self.act.bodyrates.x = self.neural_network_act[0] * 3.1415926 * 2
                 self.act.bodyrates.y = self.neural_network_act[1] * 3.1415926 * 2
                 self.act.bodyrates.z = self.neural_network_act[2] * 3.1415926 
-                self.act.collective_thrust = self.neural_network_act[3] * 9.81 * 2 + 9.81 
+                self.act.collective_thrust = self.neural_network_act[3] * 9.81 * 1 + 9.81 
                 if (self.act.collective_thrust < 0):
                     self.act.collective_thrust = 0
 

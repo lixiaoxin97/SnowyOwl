@@ -8,12 +8,9 @@ disable_thrust_mapping: false
 # Note: When updating the thrust mapping also the voltage dependency mapping 
 # has to be updated!
 # thrust = thrust_map_a * u^2 + thrust_map_b * u + thrust_map_c
-thrust_map_a_p: 3.30524365e-05 #
-thrust_map_b_p: -3.14652990e-02 #
-thrust_map_c_p: -2.86156855e+00 #
-thrust_map_a_n: -1.65262182e-05 #
-thrust_map_b_n: 4.98433845e-02 #
-thrust_map_c_n: -3.24070648e+01 #
+thrust_map_a: 8.30374817e-06 #
+thrust_map_b: 1.38257831e-02 #
+thrust_map_c: -4.5038003e+00 #
 # Maximum values for body rates and roll and pitch angles as they are set
 # on the Flight Controller. The max roll an pitch angles are only active
 # when flying in angle mode

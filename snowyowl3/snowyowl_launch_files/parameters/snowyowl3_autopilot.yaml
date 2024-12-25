@@ -5,7 +5,7 @@ control_command_delay: 0.0 # [s]
 start_land_velocity: 0.5 # [m/s]
 start_land_acceleration: 1 # [m/s^2]
 start_idle_duration: 2.0 # [s]
-idle_thrust: 0.0 # [m/s] in order to arm betaflight in this thrust_map
+idle_thrust: -2.0 # [m/s] in order to arm betaflight in this thrust_map
 optitrack_start_height: 1.0 # [m]
 optitrack_start_land_timeout: 5 # [s]
 optitrack_land_drop_height: 0.3 # [m]

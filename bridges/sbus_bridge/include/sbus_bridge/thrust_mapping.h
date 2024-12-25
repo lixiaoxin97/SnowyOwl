@@ -7,10 +7,8 @@ namespace thrust_mapping {
 class CollectiveThrustMapping {
  public:
   CollectiveThrustMapping();
-  CollectiveThrustMapping(const double thrust_map_a_p, const double thrust_map_b_p,
-                          const double thrust_map_c_p,
-                          const double thrust_map_a_n, const double thrust_map_b_n,
-                          const double thrust_map_c_n,
+  CollectiveThrustMapping(const double thrust_map_a, const double thrust_map_b,
+                          const double thrust_map_c,
                           const bool perform_thrust_voltage_compensation,
                           const double thrust_ratio_voltage_map_a,
                           const double thrust_ratio_voltage_map_b,
@@ -24,12 +22,9 @@ class CollectiveThrustMapping {
   bool loadParameters();
 
  private:
-  double thrust_map_a_p_;
-  double thrust_map_b_p_;
-  double thrust_map_c_p_;
-  double thrust_map_a_n_;
-  double thrust_map_b_n_;
-  double thrust_map_c_n_;
+  double thrust_map_a_;
+  double thrust_map_b_;
+  double thrust_map_c_;
 
   bool perform_thrust_voltage_compensation_;
   double thrust_ratio_voltage_map_a_;
