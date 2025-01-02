@@ -26,7 +26,7 @@ class NetworkController:
         self._state_estimate_sub = rospy.Subscriber("/snowyowl3/autopilot/state_estimate", Odometry, self.state_estimate_callback)
         self._control_command_pub = rospy.Publisher("/snowyowl3/autopilot/control_command_input", quadrotor_msgs.ControlCommand, queue_size=3)
 
-        self.neural_network = PPO2.load('./LQAH_3.zip')
+        self.neural_network = PPO2.load('./LQAH_4.zip')
         
         self.neural_network_obs = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], dtype=np.float32)
         self.neural_network_act = None
