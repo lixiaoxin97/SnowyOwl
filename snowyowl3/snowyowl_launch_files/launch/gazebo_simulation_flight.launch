@@ -72,4 +72,13 @@
     <node name="rqt_quad_gui" pkg="rqt_gui" type="rqt_gui" args="-s rqt_quad_gui.basic_flight.BasicFlight --args --quad_name $(arg quad_name)" output="screen"/>
   </group> 
 
+  <!-- rosbag !-->
+  <node
+      pkg="rosbag"
+      type="record"
+      name="bag_recorder"
+      args="record -o $(find snowyowl_launch_files)/bags/gazebo_simulation_data.bag /hummingbird/ground_truth/odometry /hummingbird/autopilot/control_command_input"
+      output="screen"
+  />
+
 </launch>

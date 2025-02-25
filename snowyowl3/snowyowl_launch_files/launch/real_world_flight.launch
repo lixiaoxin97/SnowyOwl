@@ -43,4 +43,13 @@
 
   </group>
 
+  <!-- rosbag !-->
+  <node
+      pkg="rosbag"
+      type="record"
+      name="bag_recorder"
+      args="record -o $(find snowyowl_launch_files)/bags/gazebo_simulation_data.bag /snowyowl3/autopilot/state_estimate /snowyowl3/autopilot/control_command_input"
+      output="screen"
+  />
+
 </launch>

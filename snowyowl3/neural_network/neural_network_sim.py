@@ -14,6 +14,7 @@ import numpy as np
 from scipy.spatial.transform import Rotation as R
 from nav_msgs.msg import Odometry
 import std_msgs.msg as std_msgs
+from std_msgs.msg import Header
 import quadrotor_msgs.msg as quadrotor_msgs
 from rl.lxx_baselines.ppo.ppo2 import PPO2
 
@@ -71,6 +72,8 @@ class NetworkController:
                 self.act.collective_thrust = self.neural_network_act[3] * 9.81 * 1 + 9.81 
                 if (self.act.collective_thrust < 0):
                     self.act.collective_thrust = 0
+                
+                self.act.header = Header(stamp=rospy.Time.now())
 
                 print("==============================================")
                 print(self.act)
